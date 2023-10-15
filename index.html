@@ -34,70 +34,120 @@ color: #FF9900;
 <div class="page-header">
 
 <!-- Title and Name --> 
-<h1>A Comparative Study of Vehicle Detection and Tracking: Deep Learning vs. Traditional Methods</h1> 
+<h1>A Comparative Study of Vehicle Detection and Tracking: Deep Learning vs.Traditional Methods</h1> 
 <span style="font-size: 20px; line-height: 1.5em;"><strong>Names of Team Members - Diksha Aggarwal and Surafel Anshebo  </strong></span><br>
 <span style="font-size: 18px; line-height: 1.5em;">Fall 2023 ECE 4554/5554 Computer Vision: Course Project</span><br>
 <span style="font-size: 18px; line-height: 1.5em;">Virginia Tech</span>
 <hr>
 
-Please see <a href="http://vision.cs.utexas.edu/projects/adapted_attributes/">this</a> for an example of how to lay out the various details of your project. You may need to provide more details than this, because you will not be submitting an associated paper to accompany the webpage. So the page should be self-contained.
-
 <!-- Goal -->
 <h3>Abstract</h3>
+<p>
 The Unmanned Aerial Vehicles (UAVs) are rapidly emerging with their applications ranging from surveillance to disaster response. One such area is real-time traffic monitoring where UAVs with their vision based methods can play a significant role in streamlining traffic flow, mitigating congestion and quick emergency response in accidents. However, such an implementation is accompanied by challenges related to accuracy and computational overload. Therefore, a comprehensive comparison of available methodologies in computer vision is essential to determine the most effective approach for traffic management tasks.
-<br><br>
-<!-- figure -->
-<h3>Teaser figure</h3>
-A figure that conveys the main idea behind the project or the main application being addressed.
-<br><br>
+</p>
+
+
 <!-- Main Illustrative Figure --> 
 <div style="text-align: center;">
 <img style="height: 200px;" alt="" src="mainfig.png">
 </div>
 
-<br><br>
-<!-- Introduction -->
-<h3>Introduction</h3>
-Motivation behind the problem you are solving, what applications it has, any brief background on the particular domain you are working in (if not regular RBG photographs), etc. If you are using a new way to solve an existing problem, briefly mention and describe the existing approaches and tell us how your approach is new.
 
-<br><br>
-<!-- Approach -->
-<h3>Approach</h3>
-Describe very clearly and systematically your approach to solve the problem. Tell us exactly what existing implementations you used to build your system. Tell us what obstacles you faced and how you addressed them. Justify any design choices or judgment calls you made in your approach.
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* You can add more CSS styles here if needed */
+    </style>
+</head>
+<body>
+    <!-- Introduction -->
+    <h3>Introduction</h3>
+    <p>Classical computer vision methods, which leverage inherent image attributes such as texture, color, and shape, have been the mainstay for years. Vehicles, with their distinct symmetrical shapes and unique colors, are particularly amenable to these techniques. There are several traditional computer vision methods that are being used in vehicle detection. Researchers have used methods such as template matching and Haar cascade, HOG based features, SIFT, ORB with classifiers like KNN, SVM to do vehicle detection. <span style="color: red;"> While template matching provides good results, Haar cascade is a better approach as it detects the objects by detecting features. HOG and Haar cascades give competitive results.</span> Detected objects can be tracked with methods like Lucas-Kanade optical flow, Kalman filter based SORT, mean-shift tracking. These methods are mostly based on prediction of the next probable position based on tracking features. On the other hand, in deep learning based methods like RCNN, fast RCNN, which is a two-stage method and one staged method like YOLO.</p>
 
-<br><br>
-<!-- Results -->
-<h3>Experiments and results</h3>
-Provide details about the experimental set up (number of images/videos, number of datasets you experimented with, train/test split if you used machine learning algorithms, etc.). Describe the evaluation metrics you used to evaluate how well your approach is working. Include clear figures and tables, as well as illustrative qualitative examples if appropriate. Be sure to include obvious baselines to see if your approach is doing better than a naive approach (e.g. for classification accuracy, how well would a classifier do that made random decisions?). Also discuss any parameters of your algorithms, and tell us how you set the values of those parameters. You can also show us how the performance varies as you change those parameter values. Be sure to discuss any trends you see in your results, and explain why these trends make sense. Are the results as expected? Why?
+    <p>This research conducts a comparative analysis of traditional computer vision and deep learning based vehicle detection and tracking algorithms using UAV for real-time traffic monitoring application. In conventional computer vision methods, the Haar cascade method is used with the Kannade Lucas optical flow tracker. This technique is compared with deep learning-based methods YoloV7 with DeepSORT to detect and track vehicles. A qualitative and quantitative analysis is performed in simulation and then tested on an in-house built UAV. The goal is to support informed decision making in perception and planning, ultimately enhancing safety in the industry. By evaluating these methods on a UAV platform, the research provides valuable insights for industry stakeholders to choose the most suitable approach for their specific requirements.</p>
 
+    <p>Both techniques exhibit limitations and advantages associated with hardware and software. While classical computer vision methods struggle with occlusion and lighting problems, they serve well in terms of computation power. Machine learning based methods give robust solutions and are not affected by the surrounding environment. But they are highly dataset dependent and need a lot of computational capability to train huge models. The foundation of the proposed research lies in evaluating the above two models, via both qualitative and quantitative analysis, to perform real-time vehicle detection and tracking.</p>
 <br><br>
 
-<!-- Main Results Figure --> 
+<!-- Scope -->
+<h3>Scope of The Project</h3>
+<p>
+The research is focussed on the vehicle dataset which is taken from a NADAR view of an aerial vehicle. The benefit of using such a dataset is that there is less scope of getting occluded in such cases. The dataset is not concerned with a particular section of road. Instead the UAV is flying over the vehicles and thus makes the dataset will not be constrained in spatial aspect. This gives us the benefit of tracking a particular vehicle or understanding the real-time traffic flow situation that can suggest improvement in the traffic flow and has the potential of providing real time aid in emergency situations.
+</p>
+<br><br>
 <div style="text-align: center;">
-<img style="height: 300px;" alt="" src="results.png">
+  <img src="flow.png" alt="Image Description">
+</div>
+<!-- Dataset -->
+<h3>Dataset (Explanation)</h3>
+<p>
+Finding a Nadar view dataset is not typical when it comes to traffic monitoring. Most of the research is usually conducted with a bird eye view dataset as this information is easily found using surveillance cameras in traffic signals. For detection, the dataset used is the nadar view of car dataset from parking lots. For tracking, a sequential dataset is required. This is because tracking algorithms need the temporal context to maintain identities across frames.
+
+Annotations: It has been made sure that the images for detection need to have a bounding box and the images for tracking have a consistent id around the detected vehicle. Consistent ID will ensure that the tracking algorithm is learning to identify the same object in each frame. 
+<p>
+<br><br>
+
+<h3>Available Dataset's</h3>
+<p>
+<strong>Cars Overhead with context (COWC):</strong>  The data includes wide area imagery with annotations as well as precompiled image sets for training/validation of classification and counting. Examples of images in this dataset:
+<p>
+<div style="text-align: center;">
+  <div style="display: inline-block; margin: 10px;">
+    <img src="Drone_1.png" alt="Image Description">
+  </div>
+  <div style="display: inline-block; margin: 10px;">
+    <img src="Drone_2.png" alt="Image Description">
+  </div>
 </div>
 <br><br>
-
-<!-- Results -->
-<h3>Qualitative results</h3>
-Show several visual examples of inputs/outputs of your system (success cases and failures) that help us better understand your approach.
-<br><br>
-
-<!-- Main Results Figure --> 
-<div style="text-align: center;">
-<img style="height: 300px;" alt="" src="qual_results.png">
+<p>
+<strong>DOTA:</strong> A Large-scale Dataset for Object Detection in Aerial Images: []: The DOTA images are collected from the Google Earth, GF-2 and JL-1 satellite provided by the China Centre for Resources Satellite Data and Application, and aerial images provided by CycloMedia B.V. DOTA consists of RGB images and grayscale images. The dataset mainly consists of detection of large vehicles like trucks and aircrafts. Examples of images are:
+<p>
+	<div style="text-align: center;">
+  <img src="Drone_3.png" alt="Image Description">
 </div>
 <br><br>
-
-<!-- Conclusion -->
-<h3>Conclusion</h3>
-This report has described .... Briefly summarize what you have done. 
+<!-- Image Preprocessing -->
+<h3>Image Preprocessing</h3>
+<p>
+The first step towards using a dataset is preprocessing such that the object of interest is visible in the images. We found the labeled dataset. Images from two datasets were resized to the same dimensions and formatted such that they are compatible with YoloV7. Image augmentation is also performed to increase the size of the dataset so that higher accuracy is achieved. 
+<p/>
 <br><br>
 
-<!-- References -->
-<h3>References</h3>
-Provide a list of references to other work that supported your project.
+<h3>Deep learning approach</h3>
+<p>
+<strong>Overview of YOLOv7:</strong><br>
+YOLOv7 is an advanced version of the YOLO architecture. Unlike traditional two-stage detectors like R-CNN, which first select region proposals and then classify them, YOLOv7 is a single-stage detector that predicts both bounding boxes and class probabilities directly from the image in one evaluation. This makes it exceptionally fast and suitable for real-time applications.
+
+For this research, a pre trained YOLOv7 model is utilized. The model is fine-tuned on the preprocessed nadar view vehicle dataset. The training involves adjusting the model's weights based on the labeled bounding boxes in the training images. Once trained, the model will be capable of detecting vehicles in unseen images with high accuracy.
+
 <br><br>
+
+<strong>Overview of DeepSort:</strong><br>
+DeepSort is an extension of the SORT (Simple Online and Realtime Tracking) algorithm. While SORT uses Kalman filtering and Hungarian algorithm for tracking, DeepSort incorporates deep learning features to improve tracking performance, especially in cases of occlusions or interactions between objects.
+
+DeepSort is integrated with the YOLOv7 detector. Once vehicles are detected by YOLOv7, DeepSort takes over to track these vehicles across frames. This combined approach ensured that even if the detector missed a vehicle in a particular frame (due to occlusions or other challenges), the tracker would maintain the vehicle's identity and continue tracking. The accuracy of DeepSort is evaluated using the "ID switches" metric, which measures how often the tracker changes the identity of a tracked object.
+<p/>
+<br><br>
+
+<h3>Traditional computer vision approach</h3>
+<p>
+<strong>Haar cascade:</strong><br>
+One of the traditional computer vision approach is the Haar cascade algorithm to detect vehicles. Haar Cascade method is a traditional computer vision technique used for object detection. It is based on Haar-like features and is particularly known for its efficiency in detecting objects, including vehicles. A pre-trained model (xml) that can be used with the opencv cascadeclassifier method is used. Whenever a vehicle is detected, the model will make a bounding box over the detected vehicles. 
+<p/>
+<br><br>
+
+<h3>Reference</h3>
+<ul>
+  <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0926580516300887">Detecting and tracking vehicles in traffic by unmanned aerial vehicles (Liang Wang, Fangliang Chen, Huiming Yin, December 2016)</a></li>
+  <li><a href="https://ieeexplore.ieee.org/document/990517">Rapid object detection using a boosted cascade of simple features (P. Viola, M. Jones, December 2001)</a></li>
+  <li><a href="https://captain-whu.github.io/DOTA/dataset.html">DOTA - A Large-Scale Benchmark and Challenges for Object Detection in Aerial Images</a></li>
+  <li><a href="https://gdo152.llnl.gov/cowc/">Cars Overhead With Context (Lawrence Livermore National Laboratory)</a></li>
+  <li><a href="https://atharvamusale.medium.com/vehicle-tracking-and-counting-using-yolov3-and-deep-sort-f43d1c66c7c6">Vehicle Tracking and Counting Using YOLOv3 and Deep Sort (Atharva Musale, Dec 30, 2020)</a></li>
+</ul>
+
+
 
 
   <hr>
