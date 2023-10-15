@@ -20,6 +20,10 @@ color: #3366CC;
 .data {
 color: #FF9900;
 }
+    .justified {
+    text-align: justify;
+    }
+
 </style>
   
 <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -42,7 +46,7 @@ color: #FF9900;
 
 <!-- Goal -->
 <h3>Abstract</h3>
-<p>
+<p class="justified">
 The Unmanned Aerial Vehicles (UAVs) are rapidly emerging with their applications ranging from surveillance to disaster response. One such area is real-time traffic monitoring where UAVs with their vision based methods can play a significant role in streamlining traffic flow, mitigating congestion and quick emergency response in accidents (Liang Wang, Fangliang Chen, Huiming Yin, December 2016) However, such an implementation is accompanied by challenges related to accuracy and computational overload. Therefore, a comprehensive comparison of available methodologies in computer vision is essential to determine the most effective approach for traffic management tasks.
 </p>
 
@@ -63,33 +67,33 @@ The Unmanned Aerial Vehicles (UAVs) are rapidly emerging with their applications
 <body>
     <!-- Introduction -->
     <h3>Introduction</h3>
-    <p>Classical computer vision methods, which leverage inherent image attributes such as texture, color, and shape, have been the mainstay for years. Vehicles, with their distinct symmetrical shapes and unique colors, are particularly amenable to these techniques. There are several traditional computer vision methods that are being used in vehicle detection. Researchers have used methods such as template matching and Haar cascade, HOG based features, SIFT, ORB with classifiers like KNN, SVM to do vehicle detection. While template matching provides good results, Haar cascade is a better approach as it detects the objects by detecting features. HOG and Haar cascades give competitive results. Detected objects can be tracked with methods like Lucas-Kanade optical flow, Kalman filter based SORT, mean-shift tracking. These methods are mostly based on prediction of the next probable position based on tracking features. On the other hand, in deep learning based methods like RCNN, fast RCNN, which is a two-stage method and one staged method like YOLO.</p>
+    <p class="justified">Classical computer vision methods, which leverage inherent image attributes such as texture, color, and shape, have been the mainstay for years. Vehicles, with their distinct symmetrical shapes and unique colors, are particularly amenable to these techniques. There are several traditional computer vision methods that are being used in vehicle detection. Researchers have used methods such as template matching and Haar cascade, HOG based features, SIFT, ORB with classifiers like KNN, SVM to do vehicle detection. While template matching provides good results, Haar cascade is a better approach as it detects the objects by detecting features. HOG and Haar cascades give competitive results. Detected objects can be tracked with methods like Lucas-Kanade optical flow, Kalman filter based SORT, mean-shift tracking. These methods are mostly based on prediction of the next probable position based on tracking features. On the other hand, in deep learning based methods like RCNN, fast RCNN, which is a two-stage method and one staged method like YOLO.</p>
 
-    <p>This research conducts a comparative analysis of traditional computer vision and deep learning based vehicle detection and tracking algorithms using UAV for real-time traffic monitoring application. In conventional computer vision methods, the Haar cascade method is used with the Kannade Lucas optical flow tracker. This technique is compared with deep learning-based methods YoloV7 with DeepSORT to detect and track vehicles. A qualitative and quantitative analysis is performed in simulation and then tested on an in-house built UAV. The goal is to support informed decision making in perception and planning, ultimately enhancing safety in the industry. By evaluating these methods on a UAV platform, the research provides valuable insights for industry stakeholders to choose the most suitable approach for their specific requirements.</p>
+    <p class="justified">This research conducts a comparative analysis of traditional computer vision and deep learning based vehicle detection and tracking algorithms using UAV for real-time traffic monitoring application. In conventional computer vision methods, the Haar cascade method is used with the Kannade Lucas optical flow tracker. This technique is compared with deep learning-based methods YoloV7 with DeepSORT to detect and track vehicles. A qualitative and quantitative analysis is performed in simulation and then tested on an in-house built UAV. The goal is to support informed decision making in perception and planning, ultimately enhancing safety in the industry. By evaluating these methods on a UAV platform, the research provides valuable insights for industry stakeholders to choose the most suitable approach for their specific requirements.</p>
 
-    <p>Both techniques exhibit limitations and advantages associated with hardware and software. While classical computer vision methods struggle with occlusion and lighting problems, they serve well in terms of computation power. Machine learning based methods give robust solutions and are not affected by the surrounding environment. But they are highly dataset dependent and need a lot of computational capability to train huge models. The foundation of the proposed research lies in evaluating the above two models, via both qualitative and quantitative analysis, to perform real-time vehicle detection and tracking.</p>
+    <p class="justified">Both techniques exhibit limitations and advantages associated with hardware and software. While classical computer vision methods struggle with occlusion and lighting problems, they serve well in terms of computation power. Machine learning based methods give robust solutions and are not affected by the surrounding environment. But they are highly dataset dependent and need a lot of computational capability to train huge models. The foundation of the proposed research lies in evaluating the above two models, via both qualitative and quantitative analysis, to perform real-time vehicle detection and tracking.</p>
 <br><br>
 
 <!-- Scope -->
 <h3>Scope of The Project</h3>
-<p>
+<p class="justified">
 The research is focussed on the vehicle dataset which is taken from a NADAR view of an aerial vehicle. The benefit of using such a dataset is that there is less scope of getting occluded in such cases. The dataset is not concerned with a particular section of road. Instead the UAV is flying over the vehicles and thus makes the dataset will not be constrained in spatial aspect. This gives us the benefit of tracking a particular vehicle or understanding the real-time traffic flow situation that can suggest improvement in the traffic flow and has the potential of providing real time aid in emergency situations.
 </p>
 <br><br>
 
 <!-- Dataset -->
 <h3>Dataset</h3>
-<p>
+<p class="justified">
 Finding a Nadar view dataset is not typical when it comes to traffic monitoring. Most of the research is usually conducted with a bird eye view dataset as this information is easily found using surveillance cameras in traffic signals. For detection, the dataset used is the nadar view of car dataset from parking lots. For tracking, a sequential dataset is required. This is because tracking algorithms need the temporal context to maintain identities across frames.
 
 Annotations: It has been made sure that the images for detection need to have a bounding box and the images for tracking have a consistent id around the detected vehicle. Consistent ID will ensure that the tracking algorithm is learning to identify the same object in each frame. 
-<p>
+<p class="justified">
 <br><br>
 
 <h3>Available Datasets</h3>
-<p>
+<p class="justified">
 <strong>Cars Overhead with context (COWC):</strong>  The data includes wide area imagery with annotations as well as precompiled image sets for training/validation of classification and counting. Examples of images in this dataset:
-<p>
+<p class="justified">
 <div style="text-align: center;">
   <div style="display: inline-block; margin: 10px;">
     <img src="Drone_1.png" alt="Image Description">
@@ -99,22 +103,22 @@ Annotations: It has been made sure that the images for detection need to have a 
   </div>
 </div>
 <br><br>
-<p>
+<p class="justified">
 <strong>DOTA:</strong> A Large-scale Dataset for Object Detection in Aerial Images: []: The DOTA images are collected from the Google Earth, GF-2 and JL-1 satellite provided by the China Centre for Resources Satellite Data and Application, and aerial images provided by CycloMedia B.V. DOTA consists of RGB images and grayscale images. The dataset mainly consists of detection of large vehicles like trucks and aircrafts. Examples of images are:
-<p>
+<p class="justified">
 	<div style="text-align: center;">
   <img src="Drone_3.png" alt="Image Description">
 </div>
 <br><br>
 <!-- Image Preprocessing -->
 <h3>Image Preprocessing</h3>
-<p>
+<p class="justified">
 The first step towards using a dataset is preprocessing such that the object of interest is visible in the images. We found the labeled dataset. Images from two datasets were resized to the same dimensions and formatted such that they are compatible with YoloV7. Image augmentation is also performed to increase the size of the dataset so that higher accuracy is achieved. 
 <p/>
 <br><br>
 
 <h3>Deep learning approach</h3>
-<p>
+<p class="justified">
 <strong>Overview of YOLOv7:</strong><br>
 YOLOv7 is an advanced version of the YOLO architecture. Unlike traditional two-stage detectors like R-CNN, which first select region proposals and then classify them, YOLOv7 is a single-stage detector that predicts both bounding boxes and class probabilities directly from the image in one evaluation. This makes it exceptionally fast and suitable for real-time applications.
 
@@ -130,7 +134,7 @@ DeepSort is integrated with the YOLOv7 detector. Once vehicles are detected by Y
 <br><br>
 
 <h3>Traditional computer vision approach</h3>
-<p>
+<p class="justified">
 <strong>Haar cascade:</strong><br>
 One of the traditional computer vision approach is the Haar cascade algorithm (P. Viola, M. Jones, December 2001) to detect vehicles. Haar Cascade method is a traditional computer vision technique used for object detection. It is based on Haar-like features and is particularly known for its efficiency in detecting objects, including vehicles. A pre-trained model (xml) that can be used with the opencv cascadeclassifier method is used. Whenever a vehicle is detected, the model will make a bounding box over the detected vehicles. 
 
