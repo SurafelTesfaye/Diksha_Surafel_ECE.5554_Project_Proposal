@@ -63,7 +63,7 @@ The Unmanned Aerial Vehicles (UAVs) are rapidly emerging with their applications
 <body>
     <!-- Introduction -->
     <h3>Introduction</h3>
-    <p>Classical computer vision methods, which leverage inherent image attributes such as texture, color, and shape, have been the mainstay for years. Vehicles, with their distinct symmetrical shapes and unique colors, are particularly amenable to these techniques. There are several traditional computer vision methods that are being used in vehicle detection. Researchers have used methods such as template matching and Haar cascade, HOG based features, SIFT, ORB with classifiers like KNN, SVM to do vehicle detection. <span style="color: red;"> While template matching provides good results, Haar cascade is a better approach as it detects the objects by detecting features. HOG and Haar cascades give competitive results.</span> Detected objects can be tracked with methods like Lucas-Kanade optical flow, Kalman filter based SORT, mean-shift tracking. These methods are mostly based on prediction of the next probable position based on tracking features. On the other hand, in deep learning based methods like RCNN, fast RCNN, which is a two-stage method and one staged method like YOLO.</p>
+    <p>Classical computer vision methods, which leverage inherent image attributes such as texture, color, and shape, have been the mainstay for years. Vehicles, with their distinct symmetrical shapes and unique colors, are particularly amenable to these techniques. There are several traditional computer vision methods that are being used in vehicle detection. Researchers have used methods such as template matching and Haar cascade, HOG based features, SIFT, ORB with classifiers like KNN, SVM to do vehicle detection. While template matching provides good results, Haar cascade is a better approach as it detects the objects by detecting features. HOG and Haar cascades give competitive results. Detected objects can be tracked with methods like Lucas-Kanade optical flow, Kalman filter based SORT, mean-shift tracking. These methods are mostly based on prediction of the next probable position based on tracking features. On the other hand, in deep learning based methods like RCNN, fast RCNN, which is a two-stage method and one staged method like YOLO.</p>
 
     <p>This research conducts a comparative analysis of traditional computer vision and deep learning based vehicle detection and tracking algorithms using UAV for real-time traffic monitoring application. In conventional computer vision methods, the Haar cascade method is used with the Kannade Lucas optical flow tracker. This technique is compared with deep learning-based methods YoloV7 with DeepSORT to detect and track vehicles. A qualitative and quantitative analysis is performed in simulation and then tested on an in-house built UAV. The goal is to support informed decision making in perception and planning, ultimately enhancing safety in the industry. By evaluating these methods on a UAV platform, the research provides valuable insights for industry stakeholders to choose the most suitable approach for their specific requirements.</p>
 
@@ -80,7 +80,7 @@ The research is focussed on the vehicle dataset which is taken from a NADAR view
   <img src="flow.png" alt="Image Description">
 </div>
 <!-- Dataset -->
-<h3>Dataset (Explanation)</h3>
+<h3>Dataset</h3>
 <p>
 Finding a Nadar view dataset is not typical when it comes to traffic monitoring. Most of the research is usually conducted with a bird eye view dataset as this information is easily found using surveillance cameras in traffic signals. For detection, the dataset used is the nadar view of car dataset from parking lots. For tracking, a sequential dataset is required. This is because tracking algorithms need the temporal context to maintain identities across frames.
 
@@ -88,7 +88,7 @@ Annotations: It has been made sure that the images for detection need to have a 
 <p>
 <br><br>
 
-<h3>Available Dataset's</h3>
+<h3>Available Datasets</h3>
 <p>
 <strong>Cars Overhead with context (COWC):</strong>  The data includes wide area imagery with annotations as well as precompiled image sets for training/validation of classification and counting. Examples of images in this dataset:
 <p>
