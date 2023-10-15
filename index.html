@@ -76,9 +76,7 @@ The Unmanned Aerial Vehicles (UAVs) are rapidly emerging with their applications
 The research is focussed on the vehicle dataset which is taken from a NADAR view of an aerial vehicle. The benefit of using such a dataset is that there is less scope of getting occluded in such cases. The dataset is not concerned with a particular section of road. Instead the UAV is flying over the vehicles and thus makes the dataset will not be constrained in spatial aspect. This gives us the benefit of tracking a particular vehicle or understanding the real-time traffic flow situation that can suggest improvement in the traffic flow and has the potential of providing real time aid in emergency situations.
 </p>
 <br><br>
-<div style="text-align: center;">
-  <img src="flow.png" alt="Image Description">
-</div>
+
 <!-- Dataset -->
 <h3>Dataset</h3>
 <p>
@@ -135,6 +133,8 @@ DeepSort is integrated with the YOLOv7 detector. Once vehicles are detected by Y
 <p>
 <strong>Haar cascade:</strong><br>
 One of the traditional computer vision approach is the Haar cascade algorithm to detect vehicles. Haar Cascade method is a traditional computer vision technique used for object detection. It is based on Haar-like features and is particularly known for its efficiency in detecting objects, including vehicles. A pre-trained model (xml) that can be used with the opencv cascadeclassifier method is used. Whenever a vehicle is detected, the model will make a bounding box over the detected vehicles. 
+
+In subsequent frames, optical flow algorithm is used to estimate the motion of these bounding boxes or the contents within the boxes. Optical flow will provide with motion vectors that describe how each point within the bounding box has moved from one frame to the next.
 <p/>
 <br><br>
 
