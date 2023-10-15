@@ -43,7 +43,7 @@ color: #FF9900;
 <!-- Goal -->
 <h3>Abstract</h3>
 <p>
-The Unmanned Aerial Vehicles (UAVs) are rapidly emerging with their applications ranging from surveillance to disaster response. One such area is real-time traffic monitoring where UAVs with their vision based methods can play a significant role in streamlining traffic flow, mitigating congestion and quick emergency response in accidents. However, such an implementation is accompanied by challenges related to accuracy and computational overload. Therefore, a comprehensive comparison of available methodologies in computer vision is essential to determine the most effective approach for traffic management tasks.
+The Unmanned Aerial Vehicles (UAVs) are rapidly emerging with their applications ranging from surveillance to disaster response. One such area is real-time traffic monitoring where UAVs with their vision based methods can play a significant role in streamlining traffic flow, mitigating congestion and quick emergency response in accidents (Liang Wang, Fangliang Chen, Huiming Yin, December 2016) However, such an implementation is accompanied by challenges related to accuracy and computational overload. Therefore, a comprehensive comparison of available methodologies in computer vision is essential to determine the most effective approach for traffic management tasks.
 </p>
 
 
@@ -132,7 +132,7 @@ DeepSort is integrated with the YOLOv7 detector. Once vehicles are detected by Y
 <h3>Traditional computer vision approach</h3>
 <p>
 <strong>Haar cascade:</strong><br>
-One of the traditional computer vision approach is the Haar cascade algorithm to detect vehicles. Haar Cascade method is a traditional computer vision technique used for object detection. It is based on Haar-like features and is particularly known for its efficiency in detecting objects, including vehicles. A pre-trained model (xml) that can be used with the opencv cascadeclassifier method is used. Whenever a vehicle is detected, the model will make a bounding box over the detected vehicles. 
+One of the traditional computer vision approach is the Haar cascade algorithm (P. Viola, M. Jones, December 2001) to detect vehicles. Haar Cascade method is a traditional computer vision technique used for object detection. It is based on Haar-like features and is particularly known for its efficiency in detecting objects, including vehicles. A pre-trained model (xml) that can be used with the opencv cascadeclassifier method is used. Whenever a vehicle is detected, the model will make a bounding box over the detected vehicles. 
 
 In subsequent frames, optical flow algorithm is used to estimate the motion of these bounding boxes or the contents within the boxes. Optical flow will provide with motion vectors that describe how each point within the bounding box has moved from one frame to the next.
 <p/>
@@ -146,9 +146,6 @@ In subsequent frames, optical flow algorithm is used to estimate the motion of t
   <li><a href="https://gdo152.llnl.gov/cowc/">Cars Overhead With Context (Lawrence Livermore National Laboratory)</a></li>
   <li><a href="https://atharvamusale.medium.com/vehicle-tracking-and-counting-using-yolov3-and-deep-sort-f43d1c66c7c6">Vehicle Tracking and Counting Using YOLOv3 and Deep Sort (Atharva Musale, Dec 30, 2020)</a></li>
 </ul>
-
-
-
 
   <hr>
   <footer> 
