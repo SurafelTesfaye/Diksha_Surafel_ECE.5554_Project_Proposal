@@ -1,0 +1,65 @@
+
+
+''' Initialize Points for Optical Flow: After detecting vehicles with the Haar cascade, you'll need to initialize points for tracking. 
+Typically, these points could be the center of the detected bounding boxes.
+Implement Lucas-Kanade Optical Flow: Use the Lucas-Kanade method to track these points across frames.
+Update Bounding Boxes: Update the positions of the bounding boxes based on the movement of these points. '''
+import cv2
+import time
+import numpy as np
+
+# Create our car classifier
+car_classifier = cv2.CascadeClassifier('haarcascade_car.xml')
+
+# Initiate video capture for video file
+cap = cv2.VideoCapture('cars_.mp4')
+
+# Parameters for Lucas-Kanade optical flow
+lk_params = dict(winSize=(15, 15), maxLevel=2, criteria=(cv2.TERM_CRITERIA_EPS | cv2.TERM_CRITERIA_COUNT, 10, 0.03))
+
+ret, old_frame = cap.read()
+old_gray = cv2.cvtColor(old_frame, cv2.COLOR_BGR2GRAY)
+
+# Initialize empty points array
+p0 = np.array([], dtype=np.float32)
+
+# Loop once video is successfully loaded
+while cap.isOpened():
+    time.sleep(.05)
+    ret, frame = cap.read()
+    if not ret:
+        break
+
+    frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # If there are no points to track, detect cars
+    if p0.size == 0:
+        cars = car_classifier.detectMultiScale(frame_gray, 1.4, 2)
+        p0 = np.array([[x + w/2, y + h/2] for (x, y, w, h) in cars], dtype=np.float32).reshape(-1, 1, 2)
+    else:
+        # Calculate optical flow
+        p1, st, err = cv2.calcOpticalFlowPyrLK(old_gray, frame_gray, p0, None, **lk_params)
+        
+        # Select good points
+        good_new = p1[st==1]
+        good_old = p0[st==1]
+
+        # Draw the tracks
+        for i, (new, old) in enumerate(zip(good_new, good_old)):
+            a, b = new.ravel()
+            x, y = int(a - 15), int(b - 15)  # Adjust size of bounding box if needed and convert to int
+            cv2.rectangle(frame, (x, y), (x + 30, y + 30), (0, 255, 255), 2)
+            # ...
+
+
+        # Update the previous frame and points
+        p0 = good_new.reshape(-1, 1, 2)
+
+    cv2.imshow('Cars', frame)
+    old_gray = frame_gray.copy()
+
+    if cv2.waitKey(1) == 13: #13 is the Enter Key
+        break
+
+cap.release()
+cv2.destroyAllWindows()
