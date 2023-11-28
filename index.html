@@ -1,166 +1,727 @@
 <!DOCTYPE html>
-<html lang="en"><head>  
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
-  <title>Computer Vision Course Project
-  | ECE, Virginia Tech | Fall 2023: ECE 4554/5554</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-<!-- Le styles -->  
-  <link href="css/bootstrap.css" rel="stylesheet">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Vision final project</title>
 <style>
-body {
-padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: space-around;
+  }
+  .section {
+    font-size: 20px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 15px;
+    flex-basis: 45%; /* Adjust the width for each box */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+
+  .section:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+    border-color: #9e0303; /* Change border color on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Add or change shadow on hover */
 }
-.vis {
-color: #3366CC;
+
+.section h2:hover {
+    color: #9e0303; /* Change title color on hover */
 }
-.data {
-color: #FF9900;
+
+  .section-link {
+    text-decoration: none; /* Removes underline from links */
+    color: inherit; /* Ensures the text color is not changed by the link */
+  }
+
+  .section-link:hover .section {
+    background-color: #f5f5f5; /* Example hover effect for the section */
+  }
+
+  .section img {
+    max-width: 100%;
+    height: auto;
+  }
+  .footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .centered-image {
+    text-align: center; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
-    .justified {
-    text-align: justify;
+
+figcaption {
+    text-align: center;
+    margin-top: 10px; /* Space above the caption */
+    margin-bottom: 20px; /* Space below the caption, adjust as needed */
+}
+
+
+  .Abstract {
+      font-size: 40px;
+      text-align: center; /* Center align the text */
+      color: #9e0303; /* Change the color (example: red) */
     }
 
+  .Introduction {
+      font-size: 40px;
+      text-align: center; /* Center align the text */
+      color: #9e0303; /* Change the color (example: red) */
+    }
+
+    .Approaches {
+      font-size: 40px;
+      text-align: center; /* Center align the text */
+      color: #9e0303; /* Change the color (example: red) */
+    }
+
+    .Implementation {
+      font-size: 40px;
+      text-align: center; /* Center align the text */
+      color: #9e0303; /* Change the color (example: red) */
+    }
+    .Results {
+      font-size: 40px;
+      text-align: center; /* Center align the text */
+      color: #9e0303; /* Change the color (example: red) */
+    }
+    .Reference {
+      font-size: 40px;
+      text-align: center; /* Center align the text */
+      color: #9e0303; /* Change the color (example: red) */
+    }
+    
+    .justified {
+            text-align: justify; /* Justifies the paragraph text */
+            margin-left: auto;   /* These two lines center the paragraph block */
+            margin-right: auto;
+            max-width: 1200px;    /* You can adjust this value as per your design needs */
+            font-size: 22px;     /* Increased font size */
+            line-height:1.6;
+        }
+
+    html {
+    scroll-behavior: smooth;
+  }
+
 </style>
-  
-<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements --><!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
 </head>
-
 <body>
+
+<div  class="header">
+  <h1>A Comparative Study of Vehicle Detection and Tracking: Deep Learning vs.Traditional Methods
+</h1>
+<h2> Team Members: Diksha Aggarwal and Surafel Anshebo</h2>
+<h2> Fall 2023 ECE 4554/5554 Computer Vision: Course Project</h2>
+<h2> Virginia Tech</h2>
+
+</div>
+<br></br>
+
 <div class="container">
-<div class="page-header">
 
-<!-- Title and Name --> 
-<h1>A Comparative Study of Vehicle Detection and Tracking: Deep Learning vs.Traditional Methods</h1> 
-<span style="font-size: 20px; line-height: 1.5em;"><strong>Names of Team Members - Diksha Aggarwal and Surafel Anshebo  </strong></span><br>
-<span style="font-size: 18px; line-height: 1.5em;">Fall 2023 ECE 4554/5554 Computer Vision: Course Project</span><br>
-<span style="font-size: 18px; line-height: 1.5em;">Virginia Tech</span>
-<hr>
+  <div class="section">
+    <a href="#Abstract"><h2>1. Abstract</h2></a>
+    <p>Motivation behind the problem, approaches and results obtained.</p>
+    <img src="path-to-intro-image.jpg" alt="Intro Image">
+  </div>
 
-<!-- Goal -->
-<h3>Abstract</h3>
-<p class="justified">
-The Unmanned Aerial Vehicles (UAVs) are rapidly emerging with their applications ranging from surveillance to disaster response. One such area is real-time traffic monitoring where UAVs with their vision based methods can play a significant role in streamlining traffic flow, mitigating congestion and quick emergency response in accidents<a href="https://www.sciencedirect.com/science/article/abs/pii/S0926580516300887"> (Liang Wang, Fangliang Chen, Huiming Yin, December 2016)</a> However, such an implementation is accompanied by challenges related to accuracy and computational overload. Therefore, a comprehensive comparison of available methodologies in computer vision is essential to determine the most effective approach for traffic management tasks.
-</p>
+    <div class="section">
+    <a href="#Introduction"><h2>2. Introduction</h2></a>
+    <p>A brief description of the problem being dealt with, which includes - 
+        the motivation behind the problem, background on the existing 
+        approaches being used in this field of research, and some applications of this 
+        project.</p>
+    <img src="path-to-intro-image.jpg" alt="Intro Image">
+  </div>
 
+  <div class="section">
+    <a href="#Approaches"> <h2>3. Approaches</h2></a>
+    <p>A description of the different approaches proposed...</p>
+    <img src="path-to-approaches-image.jpg" alt="Approaches Image">
+  </div>
 
-<!-- Main Illustrative Figure --> 
-<div style="text-align: center;">
-<img style="height: 200px;" alt="" src="mainfig.png">
+  <div class="section">
+    <a href="#Results"> <h2>4. Results and Conclusion</h2></a>
+    <p>A description of the different approaches proposed...</p>
+    <img src="path-to-approaches-image.jpg" alt="Approaches Image">
+  </div>
+
 </div>
 
+    <!-- Abstract -->
+    <h3 id="Abstract" class="Abstract">Abstract</h3>
+    <p class="justified">
+        The Unmanned Aerial Vehicles (UAVs) are rapidly emerging with their applications ranging from surveillance to disaster response. 
+        One such area is real-time traffic monitoring where UAVs with their vision based 
+        methods can play a significant role in streamlining traffic flow, mitigating 
+        congestion and quick emergency response in accidents
+        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0926580516300887"> 
+        (Liang Wang, Fangliang Chen, Huiming Yin, December 2016)</a> However, such an 
+        implementation is accompanied by challenges related to accuracy and computational 
+        overload. Therefore, a comprehensive comparison of available methodologies in 
+        computer vision is essential to determine the most effective approach for traffic 
+        management tasks.
+    </p>
+    <br><br>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        /* You can add more CSS styles here if needed */
-    </style>
-</head>
-<body>
     <!-- Introduction -->
-    <h3>Introduction</h3>
-    <p class="justified">Classical computer vision methods, which leverage inherent image attributes such as texture, color, and shape, have been the mainstay for years. Vehicles, with their distinct symmetrical shapes and unique colors, are particularly amenable to these techniques. There are several traditional computer vision methods that are being used in vehicle detection. Researchers have used methods such as template matching and Haar cascade, HOG based features, SIFT, ORB with classifiers like KNN, SVM to do vehicle detection. While template matching provides good results, Haar cascade is a better approach as it detects the objects by detecting features. HOG and Haar cascades give competitive results. Detected objects can be tracked with methods like Lucas-Kanade optical flow, Kalman filter based SORT, mean-shift tracking. These methods are mostly based on prediction of the next probable position based on tracking features. On the other hand, in deep learning based methods like RCNN, fast RCNN, which is a two-stage method and one staged method like YOLO.</p>
+    <h3 id="Introduction" class ="Introduction">Introduction</h3>
+    <p class="justified">Classical computer vision methods, which leverage inherent 
+        image attributes such as texture, color, and shape, have been the mainstay for years. 
+        Vehicles, with their distinct symmetrical shapes and unique colors, are 
+        particularly amenable to these techniques. There are several traditional 
+        computer vision methods that are being used in vehicle detection. 
+        Researchers have used methods such as template matching and Haar cascade, 
+        HOG based features, SIFT, ORB with classifiers like KNN, SVM to do 
+        vehicle detection. While template matching provides good results, 
+        Haar cascade is a better approach as it detects the objects by 
+        detecting features. HOG and Haar cascades give competitive results. 
+        Detected objects can be tracked with methods like Lucas-Kanade 
+        optical flow, Kalman filter based SORT, mean-shift tracking. 
+        These methods are mostly based on prediction of the next 
+        probable position based on tracking features. On the other 
+        hand, in deep learning based methods like RCNN, fast RCNN, 
+        which is a two-stage method and one staged method like YOLO.
+        This research conducts a comparative analysis of traditional 
+        computer vision 
+        <p class="justified">Both techniques exhibit limitations and 
+            advantages 
+            associated with hardware and software. While classical computer vision
+             methods struggle with occlusion and lighting problems, they serve well in terms of computation power. Machine learning based methods give robust solutions and are not affected by the surrounding environment. But they are highly dataset dependent and need a lot of computational capability to train huge models. The foundation of the proposed research lies in evaluating the above two models, via both qualitative and quantitative analysis, to perform real-time vehicle detection and tracking.
+            and deep learning based vehicle detection and tracking algorithms using UAV for real-time traffic monitoring application. In conventional computer vision methods, the Haar cascade method is used with the Kannade Lucas optical flow tracker. This technique is compared with deep learning-based methods YoloV7 with DeepSORT to detect and track vehicles. A qualitative and quantitative analysis is performed in simulation and then tested on an in-house built UAV. The goal is to support informed decision making in perception and planning, ultimately enhancing safety in the industry. By evaluating these methods on a UAV platform, the research provides valuable insights for industry stakeholders to choose the most suitable approach for their specific requirements.
+        
+        Both techniques exhibit limitations and advantages associated with hardware and software. While classical computer vision methods struggle with occlusion and lighting problems, they serve well in terms of computation power. Machine learning based methods give robust solutions and are not affected by the surrounding environment. But they are highly dataset dependent and need a lot of computational capability to train huge models. The foundation of the proposed research lies in evaluating the above two models, via both qualitative and quantitative analysis, to perform real-time vehicle detection and tracking.</p>
+    <br><br>
 
-    <p class="justified">This research conducts a comparative analysis of traditional computer vision and deep learning based vehicle detection and tracking algorithms using UAV for real-time traffic monitoring application. In conventional computer vision methods, the Haar cascade method is used with the Kannade Lucas optical flow tracker. This technique is compared with deep learning-based methods YoloV7 with DeepSORT to detect and track vehicles. A qualitative and quantitative analysis is performed in simulation and then tested on an in-house built UAV. The goal is to support informed decision making in perception and planning, ultimately enhancing safety in the industry. By evaluating these methods on a UAV platform, the research provides valuable insights for industry stakeholders to choose the most suitable approach for their specific requirements.</p>
 
-    <p class="justified">Both techniques exhibit limitations and advantages associated with hardware and software. While classical computer vision methods struggle with occlusion and lighting problems, they serve well in terms of computation power. Machine learning based methods give robust solutions and are not affected by the surrounding environment. But they are highly dataset dependent and need a lot of computational capability to train huge models. The foundation of the proposed research lies in evaluating the above two models, via both qualitative and quantitative analysis, to perform real-time vehicle detection and tracking.</p>
-<br><br>
+    <!-- Approaches -->
+    <h3 id="Approaches" class ="Approaches">Approaches</h3>
+    <h3 class="justified">Deep learning approach</h3>
 
-<!-- Scope -->
-<h3>Scope of The Project</h3>
-<p class="justified">
-The research is focussed on the vehicle dataset which is taken from a NADAR view of an aerial vehicle. The benefit of using such a dataset is that there is less scope of getting occluded in such cases. The dataset is not concerned with a particular section of road. Instead the UAV is flying over the vehicles and thus makes the dataset will not be constrained in spatial aspect. This gives us the benefit of tracking a particular vehicle or understanding the real-time traffic flow situation that can suggest improvement in the traffic flow and has the potential of providing real time aid in emergency situations.
+    <h3 class="justified">Overview of YOLOv7:</h3>
+<p class="justified">YOLOv5 is an advanced version of the YOLO architecture. Unlike traditional two-stage detectors like R-CNN, which first select region proposals and then classify them, YOLOv5 is a single-stage detector that predicts both bounding boxes and class probabilities directly from the image in one evaluation. This makes it exceptionally fast and suitable for real-time applications.
 </p>
-<br><br>
-
-<!-- Dataset -->
-<h3>Dataset</h3>
-<p class="justified">
-Finding a Nadar view dataset is not typical when it comes to traffic monitoring. Most of the research is usually conducted with a bird eye view dataset as this information is easily found using surveillance cameras in traffic signals. For detection, the dataset used is the nadar view of car dataset from parking lots. For tracking, a sequential dataset is required. This is because tracking algorithms need the temporal context to maintain identities across frames.
-
-Annotations: It has been made sure that the images for detection need to have a bounding box and the images for tracking have a consistent id around the detected vehicle. Consistent ID will ensure that the tracking algorithm is learning to identify the same object in each frame. 
-<p class="justified">
-<br><br>
-
-<h3>Available Datasets</h3>
-<p class="justified">
-<strong>Cars Overhead with context (COWC):</strong>  The data includes wide area imagery with annotations as well as precompiled image sets for training/validation of classification and counting. Examples of images in this dataset:
-<p class="justified">
-<div style="text-align: center;">
-  <div style="display: inline-block; margin: 10px;">
-    <img src="Drone_1.png" alt="Image Description">
+  <div class="justified">
+  <h3 class="justified">Model Description:</h3>
+  <div style="display: flex; justify-content: space-around; align-items: center;">
+    <figure id="fig1">
+        <img src="yolo_str.png" alt="Sample Input" style="width: 100%; height: auto;">
+        <figcaption>Fig 1: YoloV5 Model Description</figcaption>
+    </figure>
   </div>
-  <div style="display: inline-block; margin: 10px;">
-    <img src="Drone_2.png" alt="Image Description">
-  </div>
+  
+<p class="justified"> 
+  Here 'n' represents the number of times that layer is used, 'from' represents the layer from which the current layer is taking the inputs where '-1' represents the previous layer, 'arguments' column specifies the parameters or settings passed to each layer or module in the network for example, models.common.Conv [3, 48, 6, 2, 2]: [Input Channels, Output Channels, Kernel Size, Stride, Padding].
+</p>
+  
+
+  
+<h3 class="justified">Overview of DeepSort:</h3>
+<p class="justified">DeepSort is an extension of the SORT (Simple Online and Realtime Tracking) algorithm. While SORT uses Kalman filtering and Hungarian algorithm for tracking, DeepSort incorporates deep learning features to improve tracking performance, especially in cases of occlusions or interactions between objects.
+</p>
+<figure class="centered-image">
+    <img src="deepsort_blockdiag.png" alt="Block Diagram of Deep SORT (Reference of paper https://www.hindawi.com/journals/cin/2023/7974201/fig1/ )" class="centered-image" style="width: 70%; height: auto;">
+    <figcaption>Fig 2: DeepSort Block Diagram</figcaption>
+</figure>
+
+
+<h3 class="justified"> Tracking with DeepSORT:</h3>
+
+<h4 class="justified"> Initializing Trackers: </h4> <p class="justified"> When an object is detected for the first time, Deep SORT initializes a new tracker for it. This tracker uses the extracted features to keep track of the object. </p>
+<h4 class="justified"> Data Association:</h4> <p class="justified"> In each new frame, Deep SORT performs a data association step. It compares the new detections (from YOLO) with existing trackers. This comparison is based on both the appearance features and the predicted motion of the objects. The Kalman filter is used for predicting the motion.</p>
+<h4 class="justified">Matching:</h4> <p class="justified"> Deep SORT matches the new detections with existing trackers. If a detection matches an existing tracker, it updates the tracker's state (like its new position and appearance). If there are detections that don't match any existing tracker, it creates new trackers for them.</p>
+<h4 class="justified"> Handling Lost Tracks:</h4> <p class="justified"> Sometimes, an object might be occluded or move out of the frame. Deep SORT handles this by allowing trackers to exist for a short time without new matching detections, giving the object a chance to reappear. If a tracker doesn't get a matching detection for too long, it is removed.</p>
+
+
+<div style="display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;">
+
+  <!-- First figure -->
+  <figure id="fig1" style="text-align: center; margin: 20px; max-width: 40%; flex: 1;">
+      <img src="sample_input.png" style="width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+      <figcaption style="text-align: center; margin-top: 10px; margin-bottom: 20px;">Fig 3: Sample Input</figcaption>
+  </figure>
+
+  <!-- Second figure -->
+  <figure id="fig2" style="text-align: center; margin: 20px; max-width: 40%; flex: 1;">
+      <img src="sample_output.png" alt="Sample Output" style="width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+      <figcaption style="text-align: center; margin-top: 10px; margin-bottom: 20px;">Fig 4: Sample Output</figcaption>
+  </figure>
+
 </div>
-<br><br>
-<p class="justified">
-<strong>DOTA:</strong> A Large-scale Dataset for Object Detection in Aerial Images: The DOTA images are collected from the Google Earth, GF-2 and JL-1 satellite provided by the China Centre for Resources Satellite Data and Application, and aerial images provided by CycloMedia B.V. DOTA consists of RGB images and grayscale images. The dataset mainly consists of detection of large vehicles like trucks and aircrafts. Examples of images are:
-<p class="justified">
-	<div style="text-align: center;">
-  <img src="Drone_3.png" alt="Image Description">
+
+  <div style="display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;">
+
+    <!-- Figure 1 -->
+    <figure id="fig1" style="text-align: center; margin: 10px; max-width: 22%; flex: 1;">
+        <img src="img15.jpg" alt="Sample Input" style="width: 100%; height: auto;">
+    </figure>
+
+    <!-- Figure 2 -->
+    <figure id="fig2" style="text-align: center; margin: 10px; max-width: 22%; flex: 1;">
+        <img src="img671.jpg" alt="Sample Output" style="width: 100%; height: auto;">
+    </figure>
+
+    <!-- Figure 3 -->
+    <figure id="fig3" style="text-align: center; margin: 10px; max-width: 22%; flex: 1;">
+        <img src="img83.jpg" alt="Sample Output" style="width: 100%; height: auto;">
+    </figure>
+
+    <!-- Figure 4 -->
+    <figure id="fig4" style="text-align: center; margin: 10px; max-width: 22%; flex: 1;">
+        <img src="img923.jpg" alt="Sample Output" style="width: 100%; height: auto;">
+    </figure>
+
 </div>
-<br><br>
-<!-- Image Preprocessing -->
-<h3>Image Preprocessing</h3>
-<p class="justified">
-The first step towards using a dataset is preprocessing such that the object of interest is visible in the images. We found the labeled dataset. Images from two datasets were resized to the same dimensions and formatted such that they are compatible with YoloV7. Image augmentation is also performed to increase the size of the dataset so that higher accuracy is achieved. 
-<p/>
-<br><br>
+<figcaption style="text-align: center; margin-top: 10px;">Common Caption: Overview of Dataset</figcaption>
 
-<h3>Deep learning approach</h3>
-<p class="justified">
-<strong>Overview of YOLOv7:</strong><br>
-YOLOv7 is an advanced version of the YOLO architecture. Unlike traditional two-stage detectors like R-CNN, which first select region proposals and then classify them, YOLOv7 is a single-stage detector that predicts both bounding boxes and class probabilities directly from the image in one evaluation. This makes it exceptionally fast and suitable for real-time applications.
+  
+      <p class="justified">
+A github repository: https://github.com/John1liu/YOLOV5-DeepSORT-Vehicle-Tracking-Master.git is used to perform the integration of DeepSORT with YoloV5. 
+  The author of this repository has trained the YoloV5 and generated weights to perform detection and tracking. 
+  But the model did not perform any predictions on videos other than the tested video in the code. 
+  Thus, weights are generated by training the YoloV5. 
+      </p>
 
-For this research, a pre trained YOLOv7 model is utilized. The model is fine-tuned on the preprocessed nadar view vehicle dataset. The training involves adjusting the model's weights based on the labeled bounding boxes in the training images. Once trained, the model will be capable of detecting vehicles in unseen images with high accuracy.
+<h4 class="justified"> Training of YoloV5: </h4>
+<p class="justified"> YoloV5 is not trained on vehicle dataset, thus the weights found on the official website of YoloV5 repository could not be used for detecting the vehicles. It provides a tutorial on Colab about training. Transfer learning approach has been utilized in this work. A pre-trained YoloV5 model is trained on new dataset of vehicle. The vehicle dataset is taken from a github repository: https://github.com/MaryamBoneh/Vehicle-Detection.git. The dataset consists of a series of images containing around 1300 images of vehicles. The dataset is divided into 70% training images, 20% validation images and 10% testing images. The format of the dataset is as follow:
+</p>
+<h5 class="justified">Format of Yolo Dataset:</h5>
 
-<br><br>
-
-<strong>Overview of DeepSort:</strong><br>
-DeepSort is an extension of the SORT (Simple Online and Realtime Tracking) algorithm. While SORT uses Kalman filtering and Hungarian algorithm for tracking, DeepSort incorporates deep learning features to improve tracking performance, especially in cases of occlusions or interactions between objects.
-
-DeepSort is integrated with the YOLOv7 detector. Once vehicles are detected by YOLOv7, DeepSort takes over to track these vehicles across frames. This combined approach ensured that even if the detector missed a vehicle in a particular frame (due to occlusions or other challenges), the tracker would maintain the vehicle's identity and continue tracking. The accuracy of DeepSort is evaluated using the "ID switches" metric, which measures how often the tracker changes the identity of a tracked object.
-<p/>
-<br><br>
-
-<h3>Traditional computer vision approach</h3>
-<p class="justified">
-<strong>Haar cascade:</strong><br>
-One of the traditional computer vision approach is the Haar cascade algorithm <a href="https://ieeexplore.ieee.org/document/990517">(P. Viola, M. Jones, December 2001) </a>to detect vehicles. Haar Cascade method is a traditional computer vision technique used for object detection. It is based on Haar-like features and is particularly known for its efficiency in detecting objects, including vehicles. A pre-trained model (xml) that can be used with the opencv cascadeclassifier method is used. Whenever a vehicle is detected, the model will make a bounding box over the detected vehicles. 
-<p/>
-<br><br>
-
-<p class="justified">
-<strong>Optical Flow:</strong><br>
-In subsequent frames, the optical flow algorithm comes into play to precisely assess the movement of the bounding boxes or the objects within these boxes. Optical flow provides motion vectors that vividly illustrate how each individual point within the bounding box has transitioned from one frame to the next. These motion vectors offer critical information about the direction and extent of the motion for every point contained within the bounding box. Leveraging this data, it becomes possible to make informed predictions regarding the likely position of the vehicle in the upcoming frame.<p/>
-<br><br>
-
-<h3>Reference</h3>
-<ul>
-  <li><a href="https://www.sciencedirect.com/science/article/abs/pii/S0926580516300887">Detecting and tracking vehicles in traffic by unmanned aerial vehicles (Liang Wang, Fangliang Chen, Huiming Yin, December 2016)</a></li>
-  <li><a href="https://ieeexplore.ieee.org/document/990517">Rapid object detection using a boosted cascade of simple features (P. Viola, M. Jones, December 2001)</a></li>
-  <li><a href="https://captain-whu.github.io/DOTA/dataset.html">DOTA - A Large-Scale Benchmark and Challenges for Object Detection in Aerial Images</a></li>
-  <li><a href="https://gdo152.llnl.gov/cowc/">Cars Overhead With Context (Lawrence Livermore National Laboratory)</a></li>
-  <li><a href="https://atharvamusale.medium.com/vehicle-tracking-and-counting-using-yolov3-and-deep-sort-f43d1c66c7c6">Vehicle Tracking and Counting Using YOLOv3 and Deep Sort (Atharva Musale, Dec 30, 2020)</a></li>
+<ul class="justified">
+    <li><strong>Images folder:</strong>
+        <ul>
+            <li>The dataset consists of a series of images containing the images of vehicles (Car, Motorcycle, Truck, Bus, Bicycle in our case).</li>
+        </ul>
+    </li>
+    <li><strong>Labels folder:</strong>
+        <ul>
+            <li>For each image, there is a corresponding label file.</li>
+            <li>These label files are in plain text format.</li>
+            <li>The name of the label file matches the name of the image file.</li>
+        </ul>
+    </li>
+    <li><strong>Label file format:</strong>
+        <ul>
+            <li>Each line in a label file corresponds to a different object in the image.</li>
+            <li>The format for each line is typically: <code>&lt;class&gt; &lt;x_center&gt; &lt;y_center&gt; &lt;width&gt; &lt;height&gt;</code>.</li>
+            <li><code>&lt;class&gt;</code> is an integer representing the class of the object (e.g., 0 for cars, 1 for Motorcycle, etc.).</li>
+            <li><code>&lt;x_center&gt;</code>, <code>&lt;y_center&gt;</code>, <code>&lt;width&gt;</code>, and <code>&lt;height&gt;</code> are float values relative to the width and height of the image and should be normalized between 0 and 1. These represent the bounding box of the object.
+                <ul>
+                    <li><code>&lt;x_center&gt;</code> and <code>&lt;y_center&gt;</code> are the center coordinates of the bounding box.</li>
+                    <li><code>&lt;width&gt;</code> and <code>&lt;height&gt;</code> are the width and height of the bounding box.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><strong>Directory Structure:</strong>
+        <ul>
+            <li>The dataset is organized into directories, one for images and one for labels.</li>
+        </ul>
+    </li>
+  <li><strong>Dataset Configuration File:</strong>
+        <ul>
+            <li>For YOLOv5, a classes.txt file is created to include the number of classes, and class names.</li>
+        </ul>
+    </li>
 </ul>
 
-  <hr>
-  <footer> 
-  <p>© Diksha Aggarwal and Surafel Anshebo</p>
-  </footer>
+    <div style="display: flex; justify-content: space-around; align-items: center;">
+    <figure id="fig1">
+        <img src="structure.png" alt="Sample Input" style="width: auto; height: 30%;">
+        <figcaption>Fig 5: Directory Structure for YoloV5 Dataset</figcaption>
+    </figure>
+
+    </div>
+  <h5 class="justified"> YoloV5 training accuracy: </h5>
+  <p class="justified"> The training is done for 50 epochs in the batch of 16 and it took 1.25 hours to train the model. 
+
+    <a href="https://colab.research.google.com/drive/1mOU64O4PNLYIvsotNcXOS6FVumm8eLV0?usp=sharing" target="_blank">
+      Colab_1
+    </a> 
+      <!-- You can change this Colab_1 and Colab_2 to change the text it is already clickable -->
+    <a href="https://colab.research.google.com/drive/1kZnDnera2oelmQyJsM13xPc5ABvXyRdg?usp=sharing" 
+    target="_blank">
+    Colab_2
+    </a> 
+
+  </p>
+
+
+   <ul class="justified">
+    <li>F1 Score:</li>
+    <ul>
+      The F1 score is a harmonic mean of precision and recall. A higher F1 score indicates a better balance between precision and recall. It         is especially useful when the class distribution is imbalanced.
+    </ul>
+    <li> Precision: </li>
+    <ul>
+      This measures how accurate the predictions are, i.e., the percentage of the model's positive identifications that were actually correct.
+    </ul>
+     <li> Recall: </li>
+    <ul>
+      This measures how good the model is at detecting the positive cases. For tracking, pretrained weights of the Deep-SORT model are used.
+    </ul>
+  </ul>
+  
+
+  <p>
+    Recall: 
+    <a href="https://github.com/nwojke/deep_sort" target="_blank">
+      github
+    </a> 
+  </p>
+
+  </p>
+<!-- Container for the first two figures -->
+<div class="justified">
+  <div style="display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;">
+
+    <!-- Figure 1 -->
+    <figure id="fig1" style="text-align: center; margin: 20px; max-width: 45%; flex: 1;">
+        <img src="P_curve.png" alt="P curve" style="width: 100%; height: auto;">
+        <figcaption style="text-align: center; margin-top: 10px;"> Fig 6: P_curve</figcaption>
+
+    </figure>
+
+    <!-- Figure 2 -->
+    <figure id="fig2" style="text-align: center; margin: 20px; max-width: 45%; flex: 1;">
+        <img src="R_curve.png" alt="R curve" style="width: 100%; height: auto;">
+        <figcaption style="text-align: center; margin-top: 10px;">Fig 7: R_curve</figcaption>
+    </figure>
+
+  </div>
 </div>
+
+<!-- Separate container for the third figure -->
+<div class="justified" style="display: flex; justify-content: center; align-items: center;">
+  <figure id="fig3" style="text-align: center; margin: 20px; max-width: 60%; flex: 1;">
+      <img src="PR_curve.png" alt="PR curve" style="width: 100%; height: auto;">
+      <figcaption style="text-align: center; margin-top: 10px;">Fig 8: PR_curve</figcaption>
+  </figure>
+</div> 
+
+<h2 class="justified">Computer Vision Approach</h2>
+
+<p class="justified">
+  One of the traditional computer vision approach is the Haar cascade 
+  algorithm <a href="https://ieeexplore.ieee.org/document/990517">(P. Viola, M. Jones, December 2001) 
+
+  </a>to detect vehicles. Haar Cascade method is a traditional computer vision technique used for 
+  object detection. It is based on Haar-like features and is particularly known for its efficiency
+   in detecting objects, including vehicles. 
+</p>
+
+<h4 class="justified">1. Detection using Haar Cascade: </h4>
+<h4 class="justified">2. Tracking using Lucas-Kanade method </h4>
+
+<h4 class="justified">1.1 Collect image dataset: </h4>
+
+<p class="justified"> The first step involves gathering a large dataset of images. Positive samples are images 
+  containing the objects of interest (e.g. Cars), and negative samples are 
+  those without the objects. It's crucial to have a diverse set of images to train the model effectively.
+  </p>      
+      
+      <h4 class="justified">1.2 Feature selection: </h4>
+
+      <p class="justified"> Haar-like features are used in this step. These features are simple 
+        rectangular patterns that are superimposed on images to calculate the difference in pixel intensities. 
+        The algorithm looks for specific features within an image, such as edges or changes in texture.
+        </p>
+
+        <h4 class="justified">1.3 Create an integral image: </h4>
+
+        <p class="justified"> This step involves converting each image in the dataset into an integral image. 
+          An integral image is a representation that allows the algorithm to calculate the sum of pixel values in 
+          any given rectangle within the image very efficiently. This process speeds up the feature calculation significantly. 
+          </p>
+
+        <h4 class="justified">1.4 Training the classifier: </h4>
+
+        <p class="justified"> With the features and integral images, a classifier (usually AdaBoost) is trained. 
+          This classifier learns which features are most effective in distinguishing between positive and negative samples. 
+          The training process involves selecting a small set of the most effective features from a larger pool, 
+          as using all possible features would be computationally intensive and inefficient. 
+
+          </p>
+
+          <h4 class="justified">1.5 Cascading classifiers: </h4>
+
+          <p class="justified"> Finally, the trained classifiers are arranged in a cascade. This means the image 
+            passes through multiple stages of classifiers. Each stage eliminates non-object regions from 
+            consideration, thus reducing false positives. The cascading process ensures that only those 
+            regions of the image that strongly resemble the object of interest (as learned by the classifiers) 
+            are passed to the final detection stage.
+  
+            </p>
+            <figure id="Haar_block_diagram_text" style="text-align: center; margin-left: auto; margin-right: auto; max-width: 100%;">
+              <img src="Haar_block_diagram.png" style="width: 70%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+              <figcaption style="text-align: center; margin-top: 10px; margin-bottom: 20px;">Fig 9: Block diagram of HAAR CASCADE Classifier</figcaption>
+          </figure>          
+
+          <p>
+          The process involves two major steps, training and detection steps. 
+          For preparing the training data, the negative images (which include everything that we 
+          don't want to detect) are prepared manually, and the positive images are prepared using the 
+          function opencv_createsamples, which creates a positive sample from a collection of positive 
+          images. Then A built in Opencv_traincascade function is used for training a cascade classifier, 
+          which is a series of stages where each stage is a collection of weak classifiers. These 
+          classifiers are essentially simple decision trees which when combined form a strong classifier.[3] 
+            </p>
+
+            <p>
+              For this project, a pretrained xml file from 
+              <a href="https://github.com/AdityaPai2398/Vehicle-And-Pedestrian-
+              Detection-Using-Haar-Cascades" target="_blank">
+                github
+              </a> 
+              with 200 positive and 200 negative images with 24*24 width and height 
+              of sample images and 20 number of stages is used.
+            </p>
+
+          <h4 class="justified">2. Tracking using Lucas-Kanade method: </h4>
+
+          <p class="justified">  
+          This method tracks the movement of detected points (centers of cars) across frames. 
+          It assumes the flow (motion) is consistent in a local neighborhood and uses a least squares 
+          approach to estimate the motion.
+            </p>      
+          
+            <p> 
+              The first step involves detecting points of interest 
+              in the video frame. These points are typically corners or highly textured
+               areas that are easy to track.
+                </p>      
+             <p> 
+              The method assumes that the motion of these points is coherent within a small neighborhood. 
+              That is, points close to each other move in a similar way. This assumption is based on the 
+          real-world behavior of objects, where parts of an object (or closely situated objects) generally move in tandem.
+              </p>      
+    
+          <p> 
+          Once points are detected, the method estimates their motion from one frame to the next. 
+          To do this, it employs 'least squares estimation'. 
+          This technique tries to find the motion vector (direction and magnitude of movement) 
+          for each point that best fits the actual movement observed across frames.
+                
+                </p>      
+
+                <h5 class="justified">Steps used in this algorithm:</h5>
+
+<ul class="justified">
+    <li><strong>Setup and initialization:</strong>
+        <ul>
+            <li>
+              Initialization: The script starts by loading a Haar Cascade classifier (car_classifier) 
+              specifically trained to detect cars. This classifier is built from a pre-trained XML 
+              file (haarcascade_car.xml), which contains the data required for detecting cars based on 
+              the Haar features.
+            </li>
+        </ul>
+    </li>
+    <li><strong>Lucas-Kanade Parameters:</strong>
+        <ul>
+            <li>Optical Flow Settings: Parameters for the Lucas-Kanade optical flow method are defined in lk_params. 
+              These include winSize (size of the window for each pyramid 
+              level which is 15*15), maxLevel (number of pyramid levels, which is 2), 
+              and criteria (specifies the termination criteria of the algorithm: 
+              either a certain number of iterations or a certain accuracy threshold, 
+              whichever is reached first).
+            </li>
+        </ul>
+    </li>
+    <li><strong>Processing loop:</strong>
+        <ul>
+            <li>Each frame is converted to a grayscale since the operations to follow 
+              (both Haar Cascade and Lucas Kanade optical flow) are performed on gray scale for 
+              efficiency.</li>
+            </li>
+          </ul>
+    <li><strong>Detecting and initializing points:</strong>
+        <ul>
+            <li>When the script detects that there are no initialized points for tracking (p0.size == 0), 
+              it performs car detection on the current frame. The detectMultiScale function of the 
+              classifier identifies cars in the frame and returns a list of rectangles (cars), where 
+              each rectangle corresponds to a detected car. For each detected car, the script 
+              calculates the center of its bounding box. 
+              These center points are stored in p0 and are used as the initial points for 
+              tracking the cars. </li>
+        </ul>
+    </li>
+  <li><strong>Optical Flow:</strong>
+        <ul>
+            <li>If there are already points initialized for tracking, the script calculates 
+              the optical flow for these points from the previous frame to the current 
+              frame using cv2.calcOpticalFlowPyrLK. This function estimates 
+              the new positions (p1) of the points.</li>
+        </ul>
+    </li>
+
+<li><strong>Drawing and updating:</strong>
+  <ul>
+      <li>Visualizing Tracking: The script then iterates through the good tracking points and 
+        draws rectangles around their new positions. This provides 
+        a visual indication of how each detected car has moved from the previous 
+        frame to the current frame.</li>
+        <li> Updating points and frame: The tracked points (p0) are updated 
+          with the new positions (good_new), and the previous 
+          frame (old_gray) is set to the current frame's grayscale version 
+          for use in the next iteration.</li>
+  </ul>
+</li>
+</ul>
+    
+            <!-- Results -->
+    <h3 id="Results" class ="Results">Results and Conclusion</h3>
+    <p class="justified"><b>Qualitative Results:</b> Based upon the data pre-processing techniques and the model architecture described above, the input images from the dataset were fed to this model and the output images with the predicted bounding boxes were analyzed to evaluate the model performance. Figures ___ show the bounding box predictions for a sample of test images. The bounding boxes are represented in green surrounding the detected vehicles </p>
+
+    <br><br>
+
+    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;">
+
+      <!-- Figure 1 for yolo output -->
+      <figure id="fig1" style="text-align: center; margin: 10px; max-width: 22%; flex: 1;">
+          <img src="car_frame_54_yolo.jpg" alt="Sample Input" style="width: 100%; height: auto;">
+      </figure>
+  
+      <!-- Figure 2 for yolo output-->
+      <figure id="fig2" style="text-align: center; margin: 10px; max-width: 22%; flex: 1;">
+          <img src="car_frame_58_yolo.jpg" alt="Sample Output" style="width: 100%; height: auto;">
+      </figure>
+  
+      <!-- Figure 3 for yolo output-->
+      <figure id="fig3" style="text-align: center; margin: 10px; max-width: 22%; flex: 1;">
+          <img src="car_frame_62_yolo.jpg" alt="Sample Output" style="width: 100%; height: auto;">
+      </figure>
+  
+  </div>
+  <figcaption style="text-align: center; margin-top: 10px;">Fig 10: Yolo test output</figcaption>
+
+  <br><br>
+
+  <div style="display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;">
+
+    <!-- Figure 1 for Haar output -->
+    <figure id="fig1" style="text-align: center; margin: 10px; max-width: 22%; flex: 1;">
+        <img src="Haar_results_52.jpeg" alt="Sample Input" style="width: 100%; height: auto;">
+    </figure>
+
+    <!-- Figure 2 for Haar output-->
+    <figure id="fig2" style="text-align: center; margin: 10px; max-width: 22%; flex: 1;">
+        <img src="Haar_results_58.jpeg" alt="Sample Output" style="width: 100%; height: auto;">
+    </figure>
+
+    <!-- Figure 3 for Haar output-->
+    <figure id="fig3" style="text-align: center; margin: 10px; max-width: 22%; flex: 1;">
+        <img src="Haar_results_62.jpeg" alt="Sample Output" style="width: 100%; height: auto;">
+    </figure>
+
 </div>
+<figcaption style="text-align: center; margin-top: 10px;">Fig 11: Haar Cascade test output</figcaption>
+
+<br></br>
+
+
+<div style="display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;">
+
+  <!-- Figure 1 -->
+  <figure id="fig1" style="text-align: center; margin: 10px; max-width: 30%; flex: 1;">
+      <img src="scaled1.gif" alt="Sample Input" style="width: 100%; height: auto;">
+  </figure>
+
+  <!-- Figure 2 -->
+  <figure id="fig2" style="text-align: center; margin: 10px; max-width: 50%; flex: 1;">
+      <img src="scaled2.gif" alt="Sample Output" style="width: 100%; height: auto;">
+  </figure>
+
+</div>
+<figcaption style="text-align: center; margin-top: 10px;">Caption: Overview of scaling issue</figcaption>
+
+
+    <p class="justified">
+      One problem with Haar Cascade is its difficulty with scaling, as clearly illustrated in 
+      the two GIF images. In these GIFs, tracking is implemented using the Lucas-Kanade method. 
+      The Haar approach shows good results with images it has 
+      been trained on, but it fails to deliver similar performance on other videos we experimented with.
+    </p>
+
+<br></br>
+<p class="justified">  <b>Quantitative Results: </b>To quantitatively evaluate the performance of the algorithm, 
+  Intersection over Union (IoU) metric has been used. IoU essentially works by taking 
+  two inputs namely - ground truth bounding box and the prediction 
+  bounding box and computing the intersection and the union of the two 
+  bounding boxes respectively.</p>
 
 <br><br>
 
-</body></html>
+
+<div class="justified">
+  <div style="display: flex; justify-content: center; align-items: center; flex-wrap: nowrap;">
+
+    <!-- IOU formuala -->
+    <figure id="fig1" style="text-align: center; margin: 20px; max-width: 45%; flex: 1;">
+        <img src="IOU.png" alt="P curve" style="width: 100%; height: auto;">
+        <figcaption style="text-align: center; margin-top: 10px;"> Fig 12: Intersection Over Union(IOU) 
+          description</figcaption>
+
+    </figure>
+
+    <!-- IOU table -->
+    <figure id="fig2" style="text-align: center; margin: 20px; max-width: 45%; flex: 1;">
+        <img src="IOU_table.png" alt="R curve" style="width: 100%; height: auto;">
+        <figcaption style="text-align: center; margin-top: 10px;">Fig 13: Intersection Over Union Table</figcaption>
+    </figure>
+
+  </div>
+</div>
+
+                <!-- Reference -->
+    <h3 id="Reference" class ="Reference">Reference</h3>
+
+
+
+    <style>
+      a {
+          text-decoration: none;
+      }
+  </style>
+  
+  <ul>
+      <a href="https://www.sciencedirect.com/science/article/abs/pii/S0926580516300887">1. Detecting and tracking vehicles in traffic by unmanned aerial vehicles (Liang Wang, Fangliang Chen, Huiming Yin, December 2016)</a>
+      <br>
+      <a href="https://ieeexplore.ieee.org/document/990517">2. Rapid object detection using a boosted cascade of simple features (P. Viola, M. Jones, December 2001)</a>
+      <a href="https://docs.opencv.org/4.x/dc/d88/tutorial_traincascade.html">3. OpenCV training a cascade classifier</a>
+      <br>
+
+
+    </ul>
+  
+
+
+
+
+    <br><br>
+            
+    
+<div class="footer">
+  <p>© Diksha Aggarwal and Surafel Anshebo</p>
+</div>
+
+</body>
+</html>
